@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Rest Assured Test Suite">
+
+    <test name="Rest Assured Tests">
+        <packages>
+            <package name="automation.Rest"/>
+        </packages>
+    </test>
+
+</suite>
