@@ -1,0 +1,46 @@
+name: Rest Assured Automation Tests
+
+on:
+
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Check Java version
+        run: java -version
+
+      - name: Run Maven tests
+        run: mvn clean test -DtrimStackTrace=false
+
+      - name: Upload Surefire Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-report
+          path: |
+            target/reports/surefire.html
+            target/surefire-reports/
+          if-no-files-found: warn

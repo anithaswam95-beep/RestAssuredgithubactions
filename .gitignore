@@ -1,0 +1,16 @@
+/target/
+# Maven
+target/
+
+# TestNG reports
+test-output/
+test-reportoutput/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# IDE
+.idea/
